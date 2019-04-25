@@ -10,7 +10,7 @@ RUN \
     useradd -ms /bin/bash builder && \
     dpkg --add-architecture i386 && \
     apt update && \
-    apt install -y make gcc git g++ libncurses5 unzip bzip2 python wget subversion libncurses5-dev zlib1g-dev gawk && \
+    apt install -y make gcc git g++ gettext libncurses5 unzip bzip2 python wget subversion libncurses5-dev zlib1g-dev gawk && \
     ln -sf bash /bin/sh
 
 USER builder
