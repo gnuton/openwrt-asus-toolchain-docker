@@ -12,12 +12,14 @@ RUN \
     dpkg --add-architecture i386 && \
     apt update && \
     apt install -y \
-    make gcc git g++ gettext libncurses5 unzip bzip2 python wget \
+    make gcc git g++ gettext libncurses5 unzip bzip2 python wget curl \
     subversion libncurses5-dev zlib1g-dev gawk locales && \
     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8 && \
-    ln -sf bash /bin/sh
+    ln -sf bash /bin/sh && \
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    apt install git-lfs
 
 
 USER builder
